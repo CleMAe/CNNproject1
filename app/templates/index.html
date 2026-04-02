@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>铸件缺陷检测平台</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">FastAPI · EfficientNet · JSON API</p>
+        <h1>铸件缺陷检测平台</h1>
+        <p class="hero-text">
+          面向后续 HTTP 集成的铸件图像检测页面。支持拖拽上传、即时预览、结果可视化展示和原始 JSON 返回查看，
+          方便人工验证与接口联调。
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#predict-panel">立即检测</a>
+          <a class="button secondary" href="/docs" target="_blank" rel="noreferrer">查看接口文档</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="status-card">
+          <p class="card-label">服务状态</p>
+          <div class="status-row">
+            <span id="health-indicator" class="status-pill pending">检查中</span>
+            <span id="model-name" class="status-meta">模型加载中</span>
+          </div>
+          <dl class="status-grid">
+            <div>
+              <dt>运行设备</dt>
+              <dd id="device-name">-</dd>
+            </div>
+            <div>
+              <dt>输入尺寸</dt>
+              <dd id="image-size">-</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </header>
+
+    <main class="content-grid">
+      <section id="predict-panel" class="panel panel-upload">
+        <div class="panel-header">
+          <div>
+            <p class="section-kicker">图片检测</p>
+            <h2>上传一张铸件图片</h2>
+          </div>
+          <p class="section-note">支持点击选择和拖拽上传，推荐使用 JPEG / PNG 图片。</p>
+        </div>
+
+        <label id="drop-zone" class="drop-zone" for="image-input">
+          <input id="image-input" type="file" accept="image/*" hidden>
+          <div class="drop-icon">+</div>
+          <p class="drop-title">将图片拖到这里，或点击选择文件</p>
+          <p class="drop-subtitle">页面会展示预览图、判定结果、耗时和完整 JSON</p>
+        </label>
+
+        <div class="preview-wrapper">
+          <div class="preview-card">
+            <div class="preview-header">
+              <span>图片预览</span>
+              <span id="file-meta">尚未选择文件</span>
+            </div>
+            <div class="preview-stage">
+              <img id="preview-image" alt="上传图片预览">
+              <div id="preview-placeholder" class="preview-placeholder">
+                <p>这里会显示上传后的检测图片</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-card">
+            <div class="control-copy">
+              <p class="card-label">操作面板</p>
+              <h3>开始接口推理</h3>
+              <p>点击后将调用 `/predict`，并以 JSON 形式返回结果。适合页面体验与接口联调共用。</p>
+            </div>
+            <div class="control-actions">
+              <button id="predict-button" class="button primary" disabled>开始检测</button>
+              <button id="reset-button" class="button tertiary" type="button">清空当前图片</button>
+            </div>
+            <p id="request-hint" class="request-hint">请先上传图片。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel-results">
+        <div class="panel-header">
+          <div>
+            <p class="section-kicker">检测结果</p>
+            <h2>结果面板</h2>
+          </div>
+          <p class="section-note">重点突出最终判定、置信度和接口耗时。</p>
+        </div>
+
+        <div class="result-grid">
+          <article class="metric-card highlight">
+            <p class="metric-label">最终判定</p>
+            <p id="predicted-label" class="metric-value">等待检测</p>
+            <p id="confidence-text" class="metric-meta">置信度：-</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-label">推理耗时</p>
+            <p id="elapsed-ms" class="metric-value">-</p>
+            <p class="metric-meta">单位：毫秒</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-label">图片尺寸</p>
+            <p id="image-dimensions" class="metric-value">-</p>
+            <p class="metric-meta">原始上传尺寸</p>
+          </article>
+        </div>
+
+        <div class="probability-card">
+          <div class="probability-header">
+            <h3>类别概率</h3>
+            <p>直观查看“合格件 / 缺陷件”的模型置信分布。</p>
+          </div>
+          <div id="probability-bars" class="probability-bars">
+            <div class="prob-row">
+              <div class="prob-head">
+                <span>合格件</span>
+                <span id="prob-ok-value">-</span>
+              </div>
+              <div class="prob-track"><div id="prob-ok-bar" class="prob-fill ok"></div></div>
+            </div>
+            <div class="prob-row">
+              <div class="prob-head">
+                <span>缺陷件</span>
+                <span id="prob-defect-value">-</span>
+              </div>
+              <div class="prob-track"><div id="prob-defect-bar" class="prob-fill defect"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel-json">
+        <div class="panel-header">
+          <div>
+            <p class="section-kicker">JSON 返回</p>
+            <h2>原始接口响应</h2>
+          </div>
+          <button id="copy-json-button" class="button tertiary" type="button">复制 JSON</button>
+        </div>
+        <pre id="json-output" class="json-output">{
+  "message": "等待接口返回结果"
+}</pre>
+      </section>
+
+      <section class="panel panel-guide">
+        <div class="panel-header">
+          <div>
+            <p class="section-kicker">联调说明</p>
+            <h2>推荐使用方式</h2>
+          </div>
+        </div>
+        <div class="guide-grid">
+          <article class="guide-card">
+            <h3>浏览器体验</h3>
+            <p>直接在当前页面上传图片，快速确认模型判定是否合理，适合人工验收和演示。</p>
+          </article>
+          <article class="guide-card">
+            <h3>接口联调</h3>
+            <p>结果区会同步展示后端原始 JSON，方便你对接前端、脚本或第三方系统。</p>
+          </article>
+          <article class="guide-card">
+            <h3>接口文档</h3>
+            <p>点击页面上方“查看接口文档”即可进入 Swagger 页面，直接测试 `/predict` 与 `/health`。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

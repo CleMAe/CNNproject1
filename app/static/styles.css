@@ -1,0 +1,469 @@
+:root {
+  --bg: #f3efe7;
+  --panel: rgba(255, 252, 246, 0.92);
+  --panel-strong: #fffaf2;
+  --line: rgba(87, 67, 44, 0.14);
+  --text: #1f1912;
+  --muted: #6b5b49;
+  --accent: #b44c2f;
+  --accent-soft: #f0c6b5;
+  --accent-dark: #7b2b15;
+  --ok: #2b7a5b;
+  --defect: #c64f2b;
+  --shadow: 0 24px 60px rgba(52, 35, 16, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(233, 180, 118, 0.45), transparent 30%),
+    radial-gradient(circle at 85% 20%, rgba(201, 100, 62, 0.18), transparent 22%),
+    linear-gradient(180deg, #efe7da 0%, #f5f2eb 42%, #ece3d5 100%);
+  font-family: "Avenir Next", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+
+.page-shell {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 24px;
+}
+
+.hero-copy,
+.status-card,
+.panel {
+  backdrop-filter: blur(16px);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.hero-copy {
+  padding: 36px;
+  border-radius: 28px;
+}
+
+.eyebrow,
+.section-kicker,
+.card-label {
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+}
+
+.hero-copy h1,
+.panel-header h2 {
+  margin: 0;
+  font-family: "Baskerville", "Times New Roman", "Songti SC", serif;
+  line-height: 1.05;
+}
+
+.hero-copy h1 {
+  font-size: clamp(40px, 5vw, 68px);
+}
+
+.hero-text,
+.section-note,
+.control-copy p,
+.guide-card p,
+.metric-meta,
+.request-hint,
+.probability-header p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.hero-actions,
+.control-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button.primary {
+  color: #fff8f2;
+  background: linear-gradient(135deg, var(--accent) 0%, #da7e4b 100%);
+}
+
+.button.secondary {
+  color: var(--accent-dark);
+  background: rgba(180, 76, 47, 0.1);
+}
+
+.button.tertiary {
+  color: var(--text);
+  background: rgba(50, 35, 20, 0.07);
+}
+
+.status-card {
+  height: 100%;
+  border-radius: 28px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.status-pill.pending {
+  background: rgba(150, 120, 84, 0.12);
+  color: #775f43;
+}
+
+.status-pill.ok {
+  background: rgba(43, 122, 91, 0.12);
+  color: var(--ok);
+}
+
+.status-pill.error {
+  background: rgba(198, 79, 43, 0.12);
+  color: var(--defect);
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.status-grid div {
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.54);
+  border-radius: 18px;
+}
+
+.status-grid dt {
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.status-grid dd {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+}
+
+.panel {
+  border-radius: 28px;
+  padding: 28px;
+}
+
+.panel-upload,
+.panel-json,
+.panel-guide {
+  grid-column: 1 / -1;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.drop-zone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 230px;
+  border: 2px dashed rgba(180, 76, 47, 0.28);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 242, 0.92), rgba(249, 238, 224, 0.88)),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(180, 76, 47, 0.03),
+      rgba(180, 76, 47, 0.03) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.drop-zone:hover,
+.drop-zone.dragover {
+  transform: translateY(-2px);
+  border-color: rgba(180, 76, 47, 0.6);
+}
+
+.drop-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: rgba(180, 76, 47, 0.12);
+  color: var(--accent);
+  font-size: 32px;
+}
+
+.drop-title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.drop-subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.preview-wrapper {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 20px;
+  margin-top: 22px;
+}
+
+.preview-card,
+.control-card,
+.metric-card,
+.probability-card,
+.guide-card {
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+}
+
+.preview-card {
+  overflow: hidden;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.preview-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 360px;
+  padding: 20px;
+}
+
+#preview-image {
+  display: none;
+  max-width: 100%;
+  max-height: 360px;
+  border-radius: 20px;
+  object-fit: contain;
+  box-shadow: 0 16px 36px rgba(45, 32, 20, 0.18);
+}
+
+.preview-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border-radius: 22px;
+  color: var(--muted);
+  background: linear-gradient(180deg, rgba(234, 224, 210, 0.65), rgba(250, 245, 237, 0.92));
+}
+
+.control-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.control-card h3,
+.probability-header h3,
+.guide-card h3 {
+  margin: 0 0 10px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.metric-card {
+  padding: 22px;
+}
+
+.metric-card.highlight {
+  background: linear-gradient(135deg, rgba(180, 76, 47, 0.08), rgba(237, 175, 108, 0.16));
+}
+
+.metric-label {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.metric-value {
+  margin: 0 0 10px;
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.probability-card {
+  padding: 22px;
+}
+
+.probability-bars {
+  display: grid;
+  gap: 16px;
+}
+
+.prob-row {
+  display: grid;
+  gap: 8px;
+}
+
+.prob-head {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.prob-track {
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(78, 58, 38, 0.08);
+}
+
+.prob-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  transition: width 0.35s ease;
+}
+
+.prob-fill.ok {
+  background: linear-gradient(90deg, #2c8e68, #64c88a);
+}
+
+.prob-fill.defect {
+  background: linear-gradient(90deg, #d24f2d, #f09a55);
+}
+
+.json-output {
+  margin: 0;
+  min-height: 280px;
+  padding: 18px;
+  overflow: auto;
+  border-radius: 22px;
+  background: #1e1a17;
+  color: #f3ece3;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.guide-card {
+  padding: 22px;
+}
+
+@media (max-width: 960px) {
+  .hero,
+  .content-grid,
+  .preview-wrapper,
+  .guide-grid,
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-header,
+  .preview-header {
+    flex-direction: column;
+  }
+
+  .page-shell {
+    width: min(100% - 20px, 1200px);
+    padding: 20px 0 32px;
+  }
+
+  .hero-copy,
+  .panel,
+  .status-card {
+    border-radius: 22px;
+    padding: 22px;
+  }
+}

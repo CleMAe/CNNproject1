@@ -1,0 +1,168 @@
+{
+  "total_records": 8648,
+  "valid_records": 8648,
+  "invalid_records": 0,
+  "dataset_counts": {
+    "raw_512": 1300,
+    "test": 715,
+    "train": 6633
+  },
+  "split_counts": {
+    "原始512图": 1300,
+    "测试集": 715,
+    "训练集": 6633
+  },
+  "label_counts": {
+    "合格件": 3656,
+    "缺陷件": 4992
+  },
+  "duplicate_info": {
+    "duplicate_file_records": 128,
+    "duplicate_hash_groups": 64,
+    "cross_split_duplicate_groups": 64,
+    "exact_duplicate_examples": {
+      "0387c085d3bd0ae07ecb8dd52ac00d65663ebce8a641e7f74164ef728b50e5ed": [
+        "data/casting_data/casting_data/train/ok_front/cast_ok_0_1180.jpeg",
+        "data/casting_data/casting_data/test/ok_front/cast_ok_0_1180.jpeg"
+      ],
+      "05184fa783840ba2589023ce5527a594c21128674525dfedf001a680be3e4ab5": [
+        "data/casting_data/casting_data/train/ok_front/cast_ok_0_1137.jpeg",
+        "data/casting_data/casting_data/test/ok_front/cast_ok_0_1137.jpeg"
+      ],
+      "06113b5dd4b161d7160f3b6477a02a0fe94d9b567ade3526e268474c21709d9f": [
+        "data/casting_data/casting_data/train/ok_front/cast_ok_0_1218.jpeg",
+        "data/casting_data/casting_data/test/ok_front/cast_ok_0_1218.jpeg"
+      ],
+      "08ca14d5672e6b79bf0d6ef2dc2d25926ef18f67a658d0f84ee98871ec7f266f": [
+        "data/casting_data/casting_data/train/ok_front/cast_ok_0_903.jpeg",
+        "data/casting_data/casting_data/test/ok_front/cast_ok_0_903.jpeg"
+      ],
+      "0b09411e68be8f06e90a7ef0480024833969389074e4798bf50f264c32d91e50": [
+        "data/casting_data/casting_data/train/ok_front/cast_ok_0_1002.jpeg",
+        "data/casting_data/casting_data/test/ok_front/cast_ok_0_1002.jpeg"
+      ],
+      "0d76eede562d7dabd51a8e9543084120fa1cc4da9ac60620aed1fddfe1e5cea6": [
+        "data/casting_data/casting_data/train/ok_front/cast_ok_0_1160.jpeg",
+        "data/casting_data/casting_data/test/ok_front/cast_ok_0_1160.jpeg"
+      ],
+      "0e96c6bceb022170e5d7ca5254f2b8dd36957ffc41d1b5703f5b1f741acab7c7": [
+        "data/casting_data/casting_data/train/ok_front/cast_ok_0_1093.jpeg",
+        "data/casting_data/casting_data/test/ok_front/cast_ok_0_1093.jpeg"
+      ],
+      "18e59809016add682086b2fa740638b4b80c2d1be92f05c14e7c55cd10a7e86d": [
+        "data/casting_data/casting_data/train/ok_front/cast_ok_0_907.jpeg",
+        "data/casting_data/casting_data/test/ok_front/cast_ok_0_907.jpeg"
+      ],
+      "1b8762d083a157b4180f18788a4a2f99e08a12134534d4ef53f760f6caac24b0": [
+        "data/casting_data/casting_data/train/ok_front/cast_ok_0_1077.jpeg",
+        "data/casting_data/casting_data/test/ok_front/cast_ok_0_1077.jpeg"
+      ],
+      "1bbbf26b5d881b1d73b2276dd7e8e9f17abc754416d2c571b09c6a043c4a986d": [
+        "data/casting_data/casting_data/train/ok_front/cast_ok_0_1140.jpeg",
+        "data/casting_data/casting_data/test/ok_front/cast_ok_0_1140.jpeg"
+      ]
+    },
+    "cross_split_duplicate_examples": {
+      "0387c085d3bd0ae07ecb8dd52ac00d65663ebce8a641e7f74164ef728b50e5ed": {
+        "splits": [
+          "测试集",
+          "训练集"
+        ],
+        "files": [
+          "data/casting_data/casting_data/train/ok_front/cast_ok_0_1180.jpeg",
+          "data/casting_data/casting_data/test/ok_front/cast_ok_0_1180.jpeg"
+        ]
+      },
+      "05184fa783840ba2589023ce5527a594c21128674525dfedf001a680be3e4ab5": {
+        "splits": [
+          "测试集",
+          "训练集"
+        ],
+        "files": [
+          "data/casting_data/casting_data/train/ok_front/cast_ok_0_1137.jpeg",
+          "data/casting_data/casting_data/test/ok_front/cast_ok_0_1137.jpeg"
+        ]
+      },
+      "06113b5dd4b161d7160f3b6477a02a0fe94d9b567ade3526e268474c21709d9f": {
+        "splits": [
+          "测试集",
+          "训练集"
+        ],
+        "files": [
+          "data/casting_data/casting_data/train/ok_front/cast_ok_0_1218.jpeg",
+          "data/casting_data/casting_data/test/ok_front/cast_ok_0_1218.jpeg"
+        ]
+      },
+      "08ca14d5672e6b79bf0d6ef2dc2d25926ef18f67a658d0f84ee98871ec7f266f": {
+        "splits": [
+          "测试集",
+          "训练集"
+        ],
+        "files": [
+          "data/casting_data/casting_data/train/ok_front/cast_ok_0_903.jpeg",
+          "data/casting_data/casting_data/test/ok_front/cast_ok_0_903.jpeg"
+        ]
+      },
+      "0b09411e68be8f06e90a7ef0480024833969389074e4798bf50f264c32d91e50": {
+        "splits": [
+          "测试集",
+          "训练集"
+        ],
+        "files": [
+          "data/casting_data/casting_data/train/ok_front/cast_ok_0_1002.jpeg",
+          "data/casting_data/casting_data/test/ok_front/cast_ok_0_1002.jpeg"
+        ]
+      },
+      "0d76eede562d7dabd51a8e9543084120fa1cc4da9ac60620aed1fddfe1e5cea6": {
+        "splits": [
+          "测试集",
+          "训练集"
+        ],
+        "files": [
+          "data/casting_data/casting_data/train/ok_front/cast_ok_0_1160.jpeg",
+          "data/casting_data/casting_data/test/ok_front/cast_ok_0_1160.jpeg"
+        ]
+      },
+      "0e96c6bceb022170e5d7ca5254f2b8dd36957ffc41d1b5703f5b1f741acab7c7": {
+        "splits": [
+          "测试集",
+          "训练集"
+        ],
+        "files": [
+          "data/casting_data/casting_data/train/ok_front/cast_ok_0_1093.jpeg",
+          "data/casting_data/casting_data/test/ok_front/cast_ok_0_1093.jpeg"
+        ]
+      },
+      "18e59809016add682086b2fa740638b4b80c2d1be92f05c14e7c55cd10a7e86d": {
+        "splits": [
+          "测试集",
+          "训练集"
+        ],
+        "files": [
+          "data/casting_data/casting_data/train/ok_front/cast_ok_0_907.jpeg",
+          "data/casting_data/casting_data/test/ok_front/cast_ok_0_907.jpeg"
+        ]
+      },
+      "1b8762d083a157b4180f18788a4a2f99e08a12134534d4ef53f760f6caac24b0": {
+        "splits": [
+          "测试集",
+          "训练集"
+        ],
+        "files": [
+          "data/casting_data/casting_data/train/ok_front/cast_ok_0_1077.jpeg",
+          "data/casting_data/casting_data/test/ok_front/cast_ok_0_1077.jpeg"
+        ]
+      },
+      "1bbbf26b5d881b1d73b2276dd7e8e9f17abc754416d2c571b09c6a043c4a986d": {
+        "splits": [
+          "测试集",
+          "训练集"
+        ],
+        "files": [
+          "data/casting_data/casting_data/train/ok_front/cast_ok_0_1140.jpeg",
+          "data/casting_data/casting_data/test/ok_front/cast_ok_0_1140.jpeg"
+        ]
+      }
+    }
+  }
+}

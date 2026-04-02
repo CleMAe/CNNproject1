@@ -1,0 +1,21 @@
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.mplconfig/
+
+# 本地数据与大文件
+data/
+cloud_sync/
+outputs/
+web_outputs/
+real-life-industrial-dataset-of-casting-product.zip
+
+# GAN 训练产物
+gan——results*/
+
+# 本地运行环境
+.venv/
+venv/
